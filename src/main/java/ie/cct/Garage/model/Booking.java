@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "bookings")
+@Table(name = "bookings", schema = "heroku_92a83c9c6123377", catalog = "")
 public class Booking {
 	
 	//@JsonIgnore

@@ -9,7 +9,7 @@ import org.hibernate.annotations.GenericGenerator;
 import java.util.Date;
 
 @Entity
-@Table(name = "roster")
+@Table(name = "roster", schema = "heroku_92a83c9c6123377", catalog = "")
 public class Roster {
 
     @JsonIgnore
