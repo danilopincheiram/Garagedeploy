@@ -7,7 +7,7 @@ import javax.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name = "services", schema = "heroku_92a83c9c6123377", catalog = "")
+@Table(name = "services", schema = "heroku_dbbdb28e0c9aeb8", catalog = "")
 public class Service {
   
 	@JsonIgnore

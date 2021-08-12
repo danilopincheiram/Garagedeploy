@@ -8,7 +8,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 
 @Entity
-@Table(name = "supply", schema = "heroku_92a83c9c6123377", catalog = "")
+@Table(name = "supply", schema = "heroku_dbbdb28e0c9aeb8", catalog = "")
 public class Supply {
 	
     @JsonIgnore
