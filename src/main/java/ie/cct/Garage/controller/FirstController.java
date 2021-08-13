@@ -72,78 +72,9 @@ public class FirstController {
 
 
 	// constructor
-	public FirstController(ServiceRepository serviceRepository, SupplyRepository supplyRepository,
-			StaffRepository staffRepository, UserRepository userRepository) {
-		this.serviceRepository = serviceRepository;
-		this.supplyRepository = supplyRepository;
-		this.staffRepository = staffRepository;
-		this.userRepository = userRepository;
+	public FirstController() {
 		
-		// create admin
-		//userRepository.save(new User("admin", "Pass1234!"));
-
-		// create the staff
-		staffRepository.save(new Staff("Maeve"));
-		staffRepository.save(new Staff("Santos"));
-		staffRepository.save(new Staff("Mario"));
-		staffRepository.save(new Staff("Danilo"));
-
-		// create the supplies
-		supplyRepository.save(new Supply("Air-fresheners", 2.0));
-		supplyRepository.save(new Supply("Air Bag Diagnostic", 232.0));
-		supplyRepository.save(new Supply("Air Conditioning", 299.0));
-		supplyRepository.save(new Supply("Battery", 89.0));
-		supplyRepository.save(new Supply("Brakes and Disks Repair", 322.0));
-		supplyRepository.save(new Supply("Blinking Lights", 59.0));
-		supplyRepository.save(new Supply("Brake Fluid", 39.0));
-		supplyRepository.save(new Supply("Car Cover", 89.0));
-		supplyRepository.save(new Supply("Car Keys", 322.0));
-		supplyRepository.save(new Supply("Car Lights Renovation", 16.0));
-		supplyRepository.save(new Supply("Carpets", 29.0));
-		supplyRepository.save(new Supply("Dashboard Polish and Fragances", 15.0));
-		supplyRepository.save(new Supply("Dry", 3.0));
-		supplyRepository.save(new Supply("Engine Bay Cleaned", 282.0));
-		supplyRepository.save(new Supply("Engine Oil", 69.0));
-		supplyRepository.save(new Supply("Extinguisher", 89.0));
-		supplyRepository.save(new Supply("Full Valet", 99.0));
-		supplyRepository.save(new Supply("GPS", 59.0));
-		supplyRepository.save(new Supply("Gearshift Cover", 14.0));
-		supplyRepository.save(new Supply("Handwash", 12.0));
-		supplyRepository.save(new Supply("Interior Lights", 38.0));
-		supplyRepository.save(new Supply("Interior Vacummend", 15.0));
-		supplyRepository.save(new Supply("Leather Car", 13.0));
-		supplyRepository.save(new Supply("Luxury Valet", 129.0));
-		supplyRepository.save(new Supply("Mirror", 240.0));
-		supplyRepository.save(new Supply("Polarized", 229.0));
-		supplyRepository.save(new Supply("Scratch Remover Ser", 29.0));
-		supplyRepository.save(new Supply("Standar Valet", 60.0));
-		supplyRepository.save(new Supply("Suspension Repair", 199.0));
-		supplyRepository.save(new Supply("Shine Ceramic", 32.0));
-		supplyRepository.save(new Supply("Seat Cover", 28.0));
-		supplyRepository.save(new Supply("Seats and Carpets removed", 85.0));
-		supplyRepository.save(new Supply("Tyre Dressing", 2.0));
-		supplyRepository.save(new Supply("Tyre Repair", 20.0));
-		supplyRepository.save(new Supply("Undercarriage wash", 6.0));
-		supplyRepository.save(new Supply("Windows Cleaned", 3.0));
-		supplyRepository.save(new Supply("Windshiel", 400.0));
-		supplyRepository.save(new Supply("Wheel Balancing", 79.0));
-		supplyRepository.save(new Supply("NTC Repair", 350.0));
-		supplyRepository.save(new Supply("Clutch Replacement", 240.0));
-
-		// create the services
-		if (serviceRepository.findByName("Annual Service") == null) {
-			serviceRepository.save(new Service("Annual Service", 230.90));
-		}
-		if (serviceRepository.findByName("Major Service") == null) {
-			serviceRepository.save(new Service("Major Service", 783.32));
-		}
-		if (serviceRepository.findByName("Repair") == null) {
-			serviceRepository.save(new Service("Repair", 360.00));
-		}
-		if (serviceRepository.findByName("Major Repair") == null) {
-			serviceRepository.save(new Service("Major Repair", 232.23));
-		}
-
+		
 	}
 
 	/**
@@ -171,6 +102,11 @@ public class FirstController {
 
 		User newUser = new User(username, password);
 
+		// initialize database
+		if(username.contentEquals("admin")){
+			seedDatabase();
+		}
+		
 		// save user to database
 		userRepository.save(newUser);
 
@@ -597,6 +533,75 @@ public class FirstController {
 			throw new BadRequestException("The roster for this day is not assigned yet");
 		}
 		return rosterRepository.findByDateBetween(start, end);
+
+	}
+	
+
+
+	private void seedDatabase(){
+		//userRepository.save(new User("admin", "Pass1234!"));
+
+		// create the staff
+		staffRepository.save(new Staff("Maeve"));
+		staffRepository.save(new Staff("Santos"));
+		staffRepository.save(new Staff("Mario"));
+		staffRepository.save(new Staff("Danilo"));
+
+		// create the supplies
+		supplyRepository.save(new Supply("Air-fresheners", 2.0));
+		supplyRepository.save(new Supply("Air Bag Diagnostic", 232.0));
+		supplyRepository.save(new Supply("Air Conditioning", 299.0));
+		supplyRepository.save(new Supply("Battery", 89.0));
+		supplyRepository.save(new Supply("Brakes and Disks Repair", 322.0));
+		supplyRepository.save(new Supply("Blinking Lights", 59.0));
+		supplyRepository.save(new Supply("Brake Fluid", 39.0));
+		supplyRepository.save(new Supply("Car Cover", 89.0));
+		supplyRepository.save(new Supply("Car Keys", 322.0));
+		supplyRepository.save(new Supply("Car Lights Renovation", 16.0));
+		supplyRepository.save(new Supply("Carpets", 29.0));
+		supplyRepository.save(new Supply("Dashboard Polish and Fragances", 15.0));
+		supplyRepository.save(new Supply("Dry", 3.0));
+		supplyRepository.save(new Supply("Engine Bay Cleaned", 282.0));
+		supplyRepository.save(new Supply("Engine Oil", 69.0));
+		supplyRepository.save(new Supply("Extinguisher", 89.0));
+		supplyRepository.save(new Supply("Full Valet", 99.0));
+		supplyRepository.save(new Supply("GPS", 59.0));
+		supplyRepository.save(new Supply("Gearshift Cover", 14.0));
+		supplyRepository.save(new Supply("Handwash", 12.0));
+		supplyRepository.save(new Supply("Interior Lights", 38.0));
+		supplyRepository.save(new Supply("Interior Vacummend", 15.0));
+		supplyRepository.save(new Supply("Leather Car", 13.0));
+		supplyRepository.save(new Supply("Luxury Valet", 129.0));
+		supplyRepository.save(new Supply("Mirror", 240.0));
+		supplyRepository.save(new Supply("Polarized", 229.0));
+		supplyRepository.save(new Supply("Scratch Remover Ser", 29.0));
+		supplyRepository.save(new Supply("Standar Valet", 60.0));
+		supplyRepository.save(new Supply("Suspension Repair", 199.0));
+		supplyRepository.save(new Supply("Shine Ceramic", 32.0));
+		supplyRepository.save(new Supply("Seat Cover", 28.0));
+		supplyRepository.save(new Supply("Seats and Carpets removed", 85.0));
+		supplyRepository.save(new Supply("Tyre Dressing", 2.0));
+		supplyRepository.save(new Supply("Tyre Repair", 20.0));
+		supplyRepository.save(new Supply("Undercarriage wash", 6.0));
+		supplyRepository.save(new Supply("Windows Cleaned", 3.0));
+		supplyRepository.save(new Supply("Windshiel", 400.0));
+		supplyRepository.save(new Supply("Wheel Balancing", 79.0));
+		supplyRepository.save(new Supply("NTC Repair", 350.0));
+		supplyRepository.save(new Supply("Clutch Replacement", 240.0));
+
+		// create the services
+		if (serviceRepository.findByName("Annual Service") == null) {
+			serviceRepository.save(new Service("Annual Service", 230.90));
+		}
+		if (serviceRepository.findByName("Major Service") == null) {
+			serviceRepository.save(new Service("Major Service", 783.32));
+		}
+		if (serviceRepository.findByName("Repair") == null) {
+			serviceRepository.save(new Service("Repair", 360.00));
+		}
+		if (serviceRepository.findByName("Major Repair") == null) {
+			serviceRepository.save(new Service("Major Repair", 232.23));
+		}
 
 	}
 
