@@ -537,9 +537,9 @@ public class FirstController {
 	}
 	
 
-
+    // initialize database into database
 	private void seedDatabase(){
-		//userRepository.save(new User("admin", "Pass1234!"));
+		//userRepository.save(new User("admin", "Pass1234@@@"));
 
 		// create the staff
 		staffRepository.save(new Staff("Maeve"));
